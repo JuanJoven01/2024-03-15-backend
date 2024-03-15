@@ -6,8 +6,6 @@ const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USERNAME, pr
   dialect: "postgres"
 });
 
-
-
 async function tryConnection () {
     try {
         await sequelize.authenticate();
@@ -18,4 +16,6 @@ async function tryConnection () {
 }
 
 tryConnection()
+
+module.exports = { sequelize }
 
