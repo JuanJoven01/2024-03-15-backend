@@ -4,7 +4,7 @@ const validatorHandler = require('../middlewares/validator.handler')
 
 const SolicitudServices = require('../services/solicitudes.services')
 
-const { newRequestSchema, updateRequestSchema } = require('../shemas/solicitudes.schemas')
+const { newRequestSchema, updateRequestSchema, deleteRequestSchema } = require('../shemas/solicitudes.schemas')
 
 /*
 Receive the next data and use the service to create a new request in db
@@ -49,6 +49,34 @@ async (req, res, next) => {
     }catch(error){
         next(error)
     }
+})
+
+/*
+Receive the next data and use the service to delete a request in db
+data schema on schemas as deleteRequestSchema
+{
+    "id": 1
+}
+*/
+router.delete('/delete', 
+validatorHandler(deleteRequestSchema, 'body'),
+async (req, res, next) => {
+    try{
+        const request = req.body;
+        const updatedRequest = await SolicitudServices.deleteRequestById(request.id)
+        res.json(updatedRequest)
+    }catch(error){
+        next(error)
+    }
+})
+
+/*
+Do not receives data and return all the Solicitu in the db
+*/
+router.get('/get',
+async (req,res,next) =>{
+    const requests = await SolicitudServices.getAllRequest()
+    res.json(requests)
 })
 
 

@@ -19,5 +19,11 @@ const updateRequestSchema = Joi.object(
     }
 )
 
+const deleteRequestSchema = Joi.object(
+    {
+        id: Joi.number().integer()
+    }
+)
 
-module.exports = {newRequestSchema, updateRequestSchema}
+
+module.exports = {newRequestSchema, updateRequestSchema, deleteRequestSchema}
