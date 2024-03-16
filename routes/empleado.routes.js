@@ -19,6 +19,7 @@ router.post('/new', validatorHandler(newEmployeeSchema, 'body'),
 async (req, res, next) => {
     try{
         const employee = req.body;
+        console.log(employee)
         const newEmployee = await empleadoServices.newEmployee(employee)
         res.json(newEmployee)
     }catch(error){
