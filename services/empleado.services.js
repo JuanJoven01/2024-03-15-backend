@@ -1,8 +1,5 @@
+const { Op } = require('sequelize')
 const {Empleado} = require('../database/models')
-
-// - Consultar e insertar información de la tabla empleado.
-// - Consultar empleados por nombre.
-
 
 // first define class to the services to the table empleado
 class empleadoServices{
@@ -42,6 +39,17 @@ class empleadoServices{
     static async __getEmployeeById (id) {
         const employee = await Empleado.findByPk(id)
         return employee
+    }
+
+    static async getEmployeesByName(name) {
+        const employees = await Empleado.findAll(
+            {
+                where: {
+                    [Op.like]: `%${name}%`
+                }
+            }
+        )
+        return employees
     }
 }
 

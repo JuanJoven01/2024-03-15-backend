@@ -17,4 +17,10 @@ const putEmployeeSchema = Joi.object(
     }
 )
 
-module.exports = {newEmployeeSchema, putEmployeeSchema}
+const getEmployeeByName = Joi.object(
+    {
+        nombre: Joi.string().max(50).required()
+    }
+)
+
+module.exports = {newEmployeeSchema, putEmployeeSchema, getEmployeeByName}

@@ -2,12 +2,9 @@ const express = require ('express')
 const validatorHandler = require('../middlewares/validator.handler')
 const router = express.Router() 
 
-const {newEmployeeSchema, putEmployeeSchema}  = require('../shemas/empleado.schema.js')
+const {newEmployeeSchema, putEmployeeSchema, getEmployeeByName}  = require('../shemas/empleado.schema.js')
 const empleadoServices = require('../services/empleado.services.js')
 
-router.get('/', async (req,res) => {
-    res.json({'message':'empleado'})
-})
 
 /*
 Receive the next data and use the service to create a new employee in db
@@ -44,7 +41,7 @@ router.put('/update', validatorHandler(putEmployeeSchema, 'body'),
 async (req, res, next) => {
     try{
         const employee = req.body;
-        const updatedEmployee = await empleadoServices.newEmployee(employee)
+        const updatedEmployee = await empleadoServices.getEmployeesByName(employee)
         res.json(updatedEmployee)
     }catch(error){
         next(error)
@@ -67,9 +64,23 @@ async (req, res, next) => {
 
 })
 
-router.post('/other', (req, res) => {
-    console.log(req.body)
-    res.json(req.body)
+/*
+Receive the next data and use the service to find a employee with similar name in db
+data schema on schemas as getEmployeeByName
+{
+    "nombre": "juan"
+}
+*/
+router.get('/get/by-name', validatorHandler(getEmployeeByName, 'body'),
+async (req, res, next) => {
+    try{
+        const name = req.body.nombre
+        const allEmployees = await empleadoServices.getEmployees(name)
+        res.json(allEmployees)
+    }catch(error){
+        next(error)
+    }
+
 })
 
 
