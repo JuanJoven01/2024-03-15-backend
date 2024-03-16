@@ -1,6 +1,7 @@
 const express = require('express')
+require('dotenv').config()
 const app = express()
-const port = 3001
+const port = process.env.PORT || 3000
 
 const {errorHandler, errorLogger, boomErrorHandler} = require('./middlewares/error.handler');
 const routerApi = require('./routes/index')
