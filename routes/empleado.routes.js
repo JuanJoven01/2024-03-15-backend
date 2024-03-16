@@ -75,7 +75,7 @@ router.get('/get/by-name', validatorHandler(getEmployeeByName, 'body'),
 async (req, res, next) => {
     try{
         const name = req.body.nombre
-        const allEmployees = await empleadoServices.getEmployees(name)
+        const allEmployees = await empleadoServices.getEmployeesByName(name)
         res.json(allEmployees)
     }catch(error){
         next(error)

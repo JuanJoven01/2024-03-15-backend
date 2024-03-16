@@ -42,13 +42,13 @@ class empleadoServices{
     }
 
     static async getEmployeesByName(name) {
-        const employees = await Empleado.findAll(
-            {
-                where: {
+        const employees = await Empleado.findAll({
+            where: {
+                nombre: {
                     [Op.like]: `%${name}%`
                 }
             }
-        )
+        });
         return employees
     }
 }
