@@ -72,7 +72,7 @@ data schema on schemas as getEmployeeByName
     "nombre": "juan"
 }
 */
-router.get('/get/by-name', validatorHandler(getEmployeeByName, 'body'),
+router.get('/get/by-name', validatorHandler(getEmployeeByName, 'query'),
 async (req, res, next) => {
     try{
         const name = req.query.nombre
