@@ -15,7 +15,7 @@ class empleadoServices{
         return theNewEmployee
     }
 
-    static async newEmployee(employee) {
+    static async updateEmployee(employee) {
         const theEmployee = await this.__getEmployeeById(employee.id)
         if (!theEmployee){
             throw boom.badRequest('Invalid user to update')

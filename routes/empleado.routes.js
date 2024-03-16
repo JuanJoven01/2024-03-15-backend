@@ -42,7 +42,7 @@ router.put('/update', validatorHandler(putEmployeeSchema, 'body'),
 async (req, res, next) => {
     try{
         const employee = req.body;
-        const updatedEmployee = await empleadoServices.getEmployeesByName(employee)
+        const updatedEmployee = await empleadoServices.updateEmployee(employee)
         res.json(updatedEmployee)
     }catch(error){
         next(error)
