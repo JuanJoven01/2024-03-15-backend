@@ -45,7 +45,7 @@ class empleadoServices{
         const employees = await Empleado.findAll({
             where: {
                 nombre: {
-                    [Op.like]: `%${name}%`
+                    [Op.iLike]: `%${name}%`
                 }
             }
         });
