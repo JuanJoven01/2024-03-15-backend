@@ -75,7 +75,7 @@ data schema on schemas as getEmployeeByName
 router.get('/get/by-name', validatorHandler(getEmployeeByName, 'body'),
 async (req, res, next) => {
     try{
-        const name = req.body.nombre
+        const name = req.query.nombre
         const allEmployees = await empleadoServices.getEmployeesByName(name)
         res.json(allEmployees)
     }catch(error){
