@@ -5,6 +5,10 @@ const port = 3001
 const {errorHandler, errorLogger, boomErrorHandler} = require('./middlewares/error.handler');
 const routerApi = require('./routes/index')
 
+const cors = require('cors');
+
+app.use(cors());
+
 app.get('/', (req, res) => {
   res.send('Hello World!')
 })
