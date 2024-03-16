@@ -1,12 +1,11 @@
 const { DataTypes, Model } = require('sequelize');
-const {sequelize} = require('../index')
+const {sequelize} = require('./index')
 
 
 // Model for Empleado
 class Empleado extends Model {}
 
 Empleado.init({
-  // Model attributes are defined here
   fecha_ingreso: {
     type: DataTypes.DATE,
     allowNull: false
@@ -20,19 +19,16 @@ Empleado.init({
     allowNull: false
   }
 }, {
-  // Other model options go here
-  sequelize, // We need to pass the connection instance
-  modelName: 'empleado' // We need to choose the model name
+  sequelize, 
+  modelName: 'empleado' 
 });
 
-// the defined model is the class itself
-console.log(Empleado === sequelize.models.empleado); // true
+// console.log(Empleado === sequelize.models.empleado); // true
 
 // Model for Solicitud
 class Solicitud extends Model {}
 
 Solicitud.init({
-  // Model attributes are defined here
   codigo: {
     type: DataTypes.STRING(50),
     allowNull: false
@@ -50,14 +46,11 @@ Solicitud.init({
     allowNull: false
   }
 }, {
-  // Other model options go here
-  sequelize, // We need to pass the connection instance
-  modelName: 'solicitud' // We need to choose the model name
+  sequelize,
+  modelName: 'solicitud'
 });
 
-
-// the defined model is the class itself
-console.log(Solicitud === sequelize.models.solicitud); // true
+// console.log(Solicitud === sequelize.models.solicitud); // true
 
 
 // Relations

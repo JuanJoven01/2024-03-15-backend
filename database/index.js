@@ -15,7 +15,7 @@ async function tryConnection () {
       }
 }
 
-tryConnection()
+// tryConnection()
 
 module.exports = { sequelize }
 
