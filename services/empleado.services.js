@@ -1,4 +1,4 @@
-Empleado = require('../database/models').Empleado
+const {Empleado} = require('../database/models')
 
 // - Consultar e insertar información de la tabla empleado.
 // - Consultar empleados por nombre.
@@ -14,6 +14,7 @@ class empleadoServices{
         const theNewEmployee = Empleado.create(
             employee
         )
+
         return theNewEmployee
     }
 

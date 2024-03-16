@@ -20,7 +20,9 @@ Empleado.init({
   }
 }, {
   sequelize, 
-  modelName: 'empleado' 
+  modelName: 'Empleado',
+  timestamps: false,
+  tableName: 'empleado'
 });
 
 // console.log(Empleado === sequelize.models.empleado); // true
@@ -47,7 +49,9 @@ Solicitud.init({
   }
 }, {
   sequelize,
-  modelName: 'solicitud'
+  modelName: 'Solicitud',
+  timestamps: false,
+  tableName: "solicitud"
 });
 
 // console.log(Solicitud === sequelize.models.solicitud); // true
@@ -57,3 +61,6 @@ Solicitud.init({
 Solicitud.belongsTo(Empleado)
 
 Empleado.hasMany(Solicitud, { foreignKey: 'id_empleado'})
+
+
+module.exports = {Empleado, Solicitud}

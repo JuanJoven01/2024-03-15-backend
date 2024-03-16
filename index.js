@@ -9,11 +9,14 @@ app.get('/', (req, res) => {
   res.send('Hello World!')
 })
 
+app.use(express.json());
+
 routerApi(app)
 
 app.use(errorLogger);
 app.use(boomErrorHandler);
 app.use(errorHandler);
+
 
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`)

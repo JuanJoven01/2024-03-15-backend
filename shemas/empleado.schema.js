@@ -8,4 +8,4 @@ const newEmployeeSchema = Joi.object(
     }
 )
 
-module.exports = newEmployeeSchema
+module.exports = {newEmployeeSchema}
