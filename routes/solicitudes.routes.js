@@ -59,10 +59,10 @@ data schema on schemas as deleteRequestSchema
 }
 */
 router.delete('/delete', 
-validatorHandler(deleteRequestSchema, 'body'),
+validatorHandler(deleteRequestSchema, 'query'),
 async (req, res, next) => {
     try{
-        const request = req.body;
+        const request = req.query;
         const updatedRequest = await SolicitudServices.deleteRequestById(request.id)
         res.json(updatedRequest)
     }catch(error){
