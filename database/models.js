@@ -58,7 +58,7 @@ Solicitud.init({
 
 
 // Relations
-Solicitud.belongsTo(Empleado)
+Solicitud.belongsTo(Empleado, { foreignKey: 'id_empleado'})
 
 Empleado.hasMany(Solicitud, { foreignKey: 'id_empleado'})
 
