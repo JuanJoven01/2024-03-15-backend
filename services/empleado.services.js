@@ -1,5 +1,6 @@
 const { Op } = require('sequelize')
 const {Empleado} = require('../database/models')
+const boom = require('@hapi/boom')
 
 // first define class to the services to the table empleado
 class empleadoServices{

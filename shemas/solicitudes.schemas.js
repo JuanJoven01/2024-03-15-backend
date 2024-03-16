@@ -9,5 +9,15 @@ const newRequestSchema = Joi.object(
     }
 )
 
+const updateRequestSchema = Joi.object(
+    {
+        id: Joi.number().integer(),
+        codigo: Joi.string().max(50).required(),
+        descripcion: Joi.string().max(50).required(),
+        resumen: Joi.string().max(50),
+        id_empleado : Joi.number().integer().required()
+    }
+)
 
-module.exports = {newRequestSchema}
+
+module.exports = {newRequestSchema, updateRequestSchema}
