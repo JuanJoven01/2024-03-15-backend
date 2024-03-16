@@ -15,6 +15,8 @@ async function tryConnection () {
       }
 }
 
+
+//uncomment the bellow line to try the connection bellow sequelize and the db with the engine
 // tryConnection()
 
 module.exports = { sequelize }

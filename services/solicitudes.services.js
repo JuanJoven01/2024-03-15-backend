@@ -7,12 +7,19 @@ class SolicitudServices{
     constructor(){
 
     }
-
+    /*
+    INSERT INTO solicitud (codigo, descripcion, resumen, id_empleado)
+    VALUES (codigo, descripcion, resumen, id_empleado);
+    */
     static async newRequest(request) {
         const theNewRequest = await Solicitud.create(request)
         return theNewRequest
     }
-
+    /*
+    UPDATE solicitud
+    SET codigo = 'codigo, descripcion = descripcion, resumen = resumen, id_empleado = id empleado
+    WHERE id = <valor_id>;
+    */
     static async updateRequest(request) {
         const theRequest = await this.__getRequestById(request.id)
         if (!theRequest){
@@ -29,12 +36,22 @@ class SolicitudServices{
         const updatedRequest = await this.__getRequestById(request.id)
         return updatedRequest
     }
-
+    /*
+    Here the front can get a unique uid to use woth the requests
+    */
     static async __getUid() {
         const uid = await crypto.randomBytes(16).toString('hex');
         return uid
     }
-
+    /*
+    SELECT
+        solicitud.*,
+        empleado.*
+    FROM
+        solicitud
+    INNER JOIN
+        empleado ON solicitud.id_empleado = empleado.id;
+    */
     static async getAllRequest() {
         const requests = await Solicitud.findAll(
             {
@@ -45,7 +62,10 @@ class SolicitudServices{
         )
         return requests
     }
-
+    /*
+    DELETE FROM solicitud
+    WHERE id = <id>;
+    */
     static async deleteRequestById(id) {
         const deleted = await Solicitud.destroy(
             {
@@ -56,7 +76,11 @@ class SolicitudServices{
         )
         return {'message': 'Solicitud Eliminada'}
     }
-
+    /*
+    SELECT *
+    FROM solicitud
+    WHERE id = <id>;
+    */
     static async __getRequestById(id) {
         const request = await Solicitud.findByPk(id)
         return request

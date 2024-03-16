@@ -57,7 +57,7 @@ Solicitud.init({
 // console.log(Solicitud === sequelize.models.solicitud); // true
 
 
-// Relations
+// Relationships between the models
 Solicitud.belongsTo(Empleado, { foreignKey: 'id_empleado'})
 
 Empleado.hasMany(Solicitud, { foreignKey: 'id_empleado'})
