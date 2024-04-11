@@ -1,7 +1,6 @@
 # 2024-03-15-backend
 technical test
 
-Online on : 'https://two024-03-15-backend.onrender.com'
 
 ## To run in local
 ### docker-compose
